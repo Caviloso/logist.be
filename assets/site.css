@@ -84,7 +84,7 @@ img, svg { max-width: 100%; }
 .site-nav ul { display: flex; flex-wrap: wrap; gap: 6px 22px; margin: 0; padding: 0; list-style: none; }
 .site-nav a { display: inline-block; padding: 4px 0; border-bottom: 2px solid transparent; }
 .site-nav a:hover { color: var(--desk-bright); }
-.site-nav a[aria-current="page"] { color: var(--desk-bright); border-bottom-color: var(--pencil); }
+.site-nav a[aria-current] { color: var(--desk-bright); border-bottom-color: var(--pencil); }
 .bar a:focus-visible, .menu-btn:focus-visible, .desk a:focus-visible { outline: 2px solid var(--desk-bright); outline-offset: 3px; }
 .menu-btn { display: none; min-height: 40px; padding: 6px 14px; font: inherit; letter-spacing: inherit;
   text-transform: inherit; color: var(--desk-bright); background: none; border: 1px solid var(--desk-soft);
@@ -117,6 +117,7 @@ main h1, main h2, main h3 { font-size: inherit; line-height: inherit; }
 .title-page { display: grid; justify-items: center; gap: 10px; padding: 18px 0 44px; text-align: center; }
 .title-page h1 { font-size: 1.5em; line-height: 1.25; font-weight: 700; text-transform: uppercase; letter-spacing: 0.03em;
   text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 6px; }
+.title-page h1 { text-wrap: balance; }
 .title-page .logline { max-width: 30em; text-wrap: balance; }
 .title-page .credit { margin-top: 14px; color: var(--soft); }
 
@@ -151,6 +152,20 @@ div.action > p + p { margin-top: 1em; }
 .scenes a:focus-visible { outline: 1px dotted var(--ink); outline-offset: 0; }
 .scenes b { text-transform: uppercase; }
 .scenes span { color: var(--soft); }
+
+/* Field notes: an essay is a script page too, but the prose runs a little wider and looser, to be read at length.
+   Its sections are scene headings; the five moves are a numbered list; the sources sit at the end in smaller type. */
+.prose { max-width: 62ch; margin-bottom: 16px; line-height: 1.6; }
+.prose > p + p { margin-top: 1em; }
+.tabs { margin: 4px 0 8px 4ch; }
+.moves { max-width: 62ch; margin: 0 0 20px; padding-left: 4ch; line-height: 1.6; display: grid; gap: 1.1em; }
+.moves li { padding-left: 0.5ch; }
+.moves li::marker { font-weight: 700; }
+.moves li > p + p { margin-top: 0.75em; }
+.sources { max-width: 62ch; margin: 0 0 8px; padding-left: 2.5ch; display: grid; gap: 8px; font-size: 15px; line-height: 1.45;
+  color: var(--soft); }
+.sources a { color: var(--soft); overflow-wrap: anywhere; }
+.notes .when { font-size: 15px; }
 
 /* Photos clipped to the page */
 .headshot { float: right; position: relative; z-index: 1; width: 200px; margin: 14px calc(-1 * (var(--pad-right) + var(--overhang))) 24px 28px;
@@ -230,7 +245,7 @@ div.action > p + p { margin-top: 1em; }
   color: var(--desk-soft); font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; }
 .desk ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 20px; }
 .desk a { color: var(--desk-text); text-decoration: none; }
-.desk a:hover, .desk a[aria-current="page"] { color: var(--desk-bright); }
+.desk a:hover, .desk a[aria-current] { color: var(--desk-bright); }
 .desk p { margin: 0; }
 
 /* ---------- Narrower screens ---------- */
@@ -263,6 +278,8 @@ div.action > p + p { margin-top: 1em; }
   .headshot .clip { left: 14px; width: 18px; height: 46px; top: -16px; }
   .rewrite .note { margin-left: 30%; font-size: 22px; }
   .still { max-width: none; }
+  .tabs { margin-left: 0; }
+  .moves { padding-left: 3ch; }
   .board { max-width: none; }
   .record > li { grid-template-columns: minmax(0, 1fr); }
   .napkin { margin-left: 0; padding: 18px 20px 20px; }
