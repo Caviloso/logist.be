@@ -374,3 +374,22 @@ body::before { content: ""; position: fixed; inset: 0; z-index: -1; pointer-even
 .index-card .card-title { font: 700 24px/26px var(--hand); color: #2b2f3a; margin: -6px 0 18px; }
 .index-card p { line-height: 26px; }
 @media (max-width: 820px) { .index-card { margin-left: 0; } }
+
+/* The case board (Case files): the cases as index cards stuck to the wall, two side by side, one under the other on a phone.
+   The whole card is the link; the ruled lines stay 26 px apart, so every line of text sits on one. */
+.case-board { list-style: none; padding: 0; margin: 22px 0 34px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 36px 30px; }
+.case-board .index-card { margin: 0; max-width: none; background-position: 0 0, 0 63px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease; }
+.case-board .index-card:nth-child(even) { transform: rotate(0.9deg); }
+.case-board .index-card:nth-child(3), .case-board .index-card:nth-child(6) { transform: rotate(-0.5deg); }
+.case-board .index-card:hover, .case-board .index-card:focus-within { transform: rotate(0deg) translateY(-3px);
+  box-shadow: 0 20px 28px -12px var(--shadow); }
+.case-board .index-card:focus-within { outline: 1px dotted var(--ink); outline-offset: 4px; }
+.case-board h3 { font-weight: 700; text-transform: uppercase; line-height: 26px; }
+.case-board h3 a { color: inherit; text-decoration: none; }
+.case-board h3 a::after { content: ""; position: absolute; inset: 0; z-index: 1; }
+.case-board h3 a:focus-visible { outline: none; }
+.case-board .index-card:hover h3 a { text-decoration: underline; text-decoration-color: var(--pencil); text-underline-offset: 3px; }
+.case-board .org { font-size: 15px; color: var(--soft); }
+@media (max-width: 820px) { .case-board { grid-template-columns: minmax(0, 1fr); gap: 30px; } }
