@@ -1,3 +1,5 @@
-# Not public yet.
 User-agent: *
-Disallow: /
+Allow: /
+Disallow: /lab/*/stats/
+
+Sitemap: https://logist.be/sitemap.xml
