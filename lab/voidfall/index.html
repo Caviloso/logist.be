@@ -3141,8 +3141,20 @@ function renderSummary(){
   h+='</div></div>';
   el.innerHTML=h;
 }
+/* Visitor stats for logist.be: each run start and each run's end (by wave reached) loads a tiny page in a hidden
+   frame. That page carries only the site's cookieless Cloudflare counter, so a run shows up as a page view of
+   stats/run.html or stats/end-wave-*.html. Nothing is stored and nothing is sent about the player. */
+function statPing(name){
+  try{
+    const f=document.createElement('iframe');
+    f.src='stats/'+name+'.html';f.title='';f.tabIndex=-1;f.setAttribute('aria-hidden','true');
+    f.style.cssText='position:absolute;left:-9999px;top:0;width:1px;height:1px;border:0;visibility:hidden';
+    document.body.appendChild(f);setTimeout(()=>f.remove(),20000);
+  }catch(e){}
+}
+function waveBand(w){return w<5?'1-4':w<10?'5-9':w<15?'10-14':w<20?'15-19':'20-plus';}
 function showDeath(){
-  mode='dead';const p=G.p;
+  mode='dead';const p=G.p;statPing('end-wave-'+waveBand(G.wave));
   $('stats').innerHTML=[['Wave',G.wave],['Level',p.lvl],['Kills',G.kills],['Elites',G.elites],['Bosses',G.bosses],['Loot',G.items]]
     .map(s=>'<div class="stat"><b>'+s[1]+'</b><span>'+s[0]+'</span></div>').join('');
   const parts=[['unspent',p.scrap],['for waves',G.wave*5],['for elites',G.elites*2],['for bosses',G.bosses*25]];
@@ -3187,7 +3199,7 @@ function startGame(){
   sfx.init();showScreen(null);
   TIER=Math.max(0,Math.min(SAVE.tsel|0,SAVE.torment|0));
   setDeck(0);G=newGame(false);G.waveDelay=1.6;mode='play';
-  applyDeckHazards();applyStartPerks();
+  applyDeckHazards();applyStartPerks();statPing('run');
 }
 function toMenu(){
   setDeck(0);G=newGame(true);mode='menu';TIER=0;
