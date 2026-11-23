@@ -1,20 +1,18 @@
 <!doctype html>
-<!-- logist.be, site 1.2.3 -->
+<!-- logist.be, site 1.3.0 -->
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="color-scheme" content="light dark">
-<script>(function(d){var r=d.documentElement,m=window.matchMedia&&matchMedia("(prefers-color-scheme: dark)"),t=d.createElement("i");
-t.style.cssText="display:none;color-scheme:light;background-color:canvas";d.head.appendChild(t);
+<meta name="color-scheme" content="only light">
+<script>(function(d){var t=d.createElement("i");
+t.style.cssText="display:none;color-scheme:only light;background-color:canvas";d.head.appendChild(t);
 var c=/^rgb\((\d+), (\d+), (\d+)\)$/.exec(getComputedStyle(t).backgroundColor),f=!!c&&+c[1]+ +c[2]+ +c[3]<384;d.head.removeChild(t);
-function set(){r.setAttribute("data-theme",f||m&&m.matches?"dark":"light")}set();
-if(m&&m.addEventListener)m.addEventListener("change",set)})(document)</script>
+d.documentElement.setAttribute("data-theme",f?"dark":"light")})(document)</script>
+<meta name="theme-color" content="#2a1c13">
 <title>Contact · Kevin Logist</title>
 <meta name="description" content="How to reach Kevin Logist for conversations about brand, comms or AI.">
 <link rel="canonical" href="https://logist.be/contact.html">
-<meta name="theme-color" content="#2a1c13" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#110b07" media="(prefers-color-scheme: dark)">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Kevin Logist">
 <meta property="og:title" content="Contact · Kevin Logist">
@@ -29,7 +27,7 @@ if(m&&m.addEventListener)m.addEventListener("change",set)})(document)</script>
 <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
 <link rel="preload" href="assets/fonts/courier-prime.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/courier-prime-bold.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/site.css?v=1.2.3">
+<link rel="stylesheet" href="assets/site.css?v=1.3.0">
 </head>
 <body class="page-contact">
 <script>document.documentElement.classList.add('js')</script>

@@ -50,12 +50,14 @@
   --night: 0;                 /* extra darkness over the whole desk at night */
 }
 /* ---------- Night: the same desk after dark ----------
-   When the phone or computer is set to dark, the script lies on the desk at night: the room is dark, the lamp throws a
-   warm pool of light, and the page is a deep blue night copy with light type. Same fonts, same layout, same props.
-   The inline script in the <head> sets data-theme="dark" when the device asks for dark, and also when a browser darkens
-   pages by itself (Samsung Internet does, and tells the page it is light). Such a browser repaints every light colour it
-   finds and cannot be stopped, so the night colours are already dark backgrounds and light type: there is nothing left
-   for it to repaint, and the page looks as designed. Print always uses the day colours. */
+   The script on the desk at night: the room is dark, the lamp throws a warm pool of light, and the page is a deep blue
+   night copy with light type. Same fonts, same layout, same props.
+   Since site 1.3.0 the site is always the day look, also when the phone or computer is set to dark. The inline script
+   in the <head> only sets data-theme="dark" when a browser darkens pages by itself whatever the page says (Samsung
+   Internet does, and tells the page it is light). Such a browser repaints every light colour it finds and cannot be
+   stopped, so the night colours are already dark backgrounds and light type: there is nothing left for it to repaint,
+   and the page looks as designed instead of scrambled. "follow_device_dark" in site.json brings back the night look for
+   devices set to dark. Print always uses the day colours. */
 @media screen {
   :root[data-theme="dark"] {
     color-scheme: dark;
